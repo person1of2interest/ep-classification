@@ -1,0 +1,696 @@
+experiments_grid:
+  exp_0:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+        window_size: 1
+    - !EpochAverager {}
+    - !NoTrainer {}
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_1:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !NoTrainer {}
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_3:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+    
+  exp_4:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochClusterer {}
+    - !NoTrainer {}
+    - !KNNCandidateSelector
+        k: 5
+    - !MostCommonComparator
+
+  exp_5:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochClusterer
+        n_clusters: 2
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+
+  exp_6:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_7:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !MetricTrainer {}
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+    
+  exp_8:
+    - !DistanceCalculator
+        metric: correlation
+    - !ChannelSmoother
+        smoothing_channels: all
+        window_size: 1
+    - !EpochAverager {}
+    - !MetricTrainer
+        algorithm: lmnn
+        channels:
+          - C1_laplacian
+          - C3-C4
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_9:
+    - !DistanceCalculator
+        metric: correlation
+    - !ChannelSmoother
+        smoothing_channels: all
+        window_size: 1
+    - !EpochAverager {}
+    - !MetricTrainer
+        algorithm: nca
+        channels:
+          - C1_laplacian
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+    
+  exp_10:
+    - !DistanceCalculator
+        metric: correlation
+    - !ChannelSmoother
+        smoothing_channels: all
+        window_size: 1
+    - !EpochAverager {}
+    - !MetricTrainer
+        algorithm: itml_supervised
+        channels:
+          - C1_laplacian
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+    
+  exp_11:
+    - !DistanceCalculator
+        metric: correlation
+    - !ChannelSmoother
+        smoothing_channels: all
+        window_size: 1
+    - !EpochAverager {}
+    - !MetricTrainer
+        algorithm: itml_supervised
+        channels:
+          - C1_laplacian
+          - C3-C4
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+  
+  exp_12:
+    - !DistanceCalculator
+        metric: correlation
+    - !ChannelSmoother
+        smoothing_channels: all
+        window_size: 1
+    - !EpochAverager {}
+    - !MetricTrainer
+        algorithm: lmnn
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+    
+  exp_13:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !MetricTrainer
+        algorithm: nca
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+    
+  exp_14:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !MetricTrainer
+        algorithm: itml_supervised
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_15:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !NoAverager {}
+    - !EmbedMetricTrainer
+        algorithm: itml_supervised
+        reducer: pca
+        embedding_dim: 100
+    - !KNNCandidateSelector
+        k: 5
+    - !MostCommonComparator
+    
+  exp_16:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !NoAverager
+    - !EmbedMetricTrainer
+        algorithm: itml_supervised
+        reducer: pca
+        embedding_dim: 150
+    - !KNNCandidateSelector
+        k: 5
+    - !MostCommonComparator
+    
+  exp_17:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+        normalization: True
+    - !EpochAverager {}
+    - !NoTrainer {}
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+    
+  exp_1_C1_laplacian:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !NoTrainer {}
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_3_C1_laplacian:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+  
+  exp_4_C1_laplacian:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochClusterer {}
+    - !NoTrainer {}
+    - !KNNCandidateSelector
+        k: 5
+    - !MostCommonComparator {}
+
+  exp_5_C1_laplacian:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !ChannelClusterer
+        n_clusters: 2
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+  
+  exp_6_C1_laplacian:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+  
+  exp_14_C1_laplacian:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !MetricTrainer
+        algorithm: itml_supervised
+        channels: 
+          - C1_laplacian
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_15_C1_laplacian:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !NoAverager {}
+    - !EmbedMetricTrainer
+        algorithm: itml_supervised
+        channels: 
+          - C1_laplacian
+        reducer: pca
+        embedding_dim: 100
+    - !KNNCandidateSelector
+        k: 5
+    - !MostCommonComparator {}
+
+  exp_17_C1_laplacian:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !NoAverager {}
+    - !EmbedMetricTrainer
+        algorithm: itml_supervised
+        channels: 
+          - C1_laplacian
+        reducer: pca
+        embedding_dim: 50
+    - !KNNCandidateSelector
+        k: 5
+    - !MostCommonComparator {}
+
+  exp_1_FC1:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !NoTrainer {}
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_3_FC1:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+  
+  exp_4_FC1:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochClusterer {}
+    - !NoTrainer {}
+    - !KNNCandidateSelector
+        k: 5
+    - !MostCommonComparator {}
+
+  exp_5_FC1:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !ChannelClusterer
+        n_clusters: 2
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+  
+  exp_6_FC1:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+  
+  exp_14_FC1:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !MetricTrainer
+        algorithm: itml_supervised
+        channels: 
+          - FC1
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_15_FC1:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !NoAverager {}
+    - !EmbedMetricTrainer
+        algorithm: itml_supervised
+        channels: 
+          - FC1
+        reducer: pca
+        embedding_dim: 100
+    - !KNNCandidateSelector
+        k: 5
+    - !MostCommonComparator {}
+
+  exp_17_FC1:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !NoAverager {}
+    - !EmbedMetricTrainer
+        algorithm: itml_supervised
+        channels: 
+          - C1_laplacian
+        reducer: pca
+        embedding_dim: 50
+    - !KNNCandidateSelector
+        k: 5
+    - !MostCommonComparator {}
+
+  exp_1_centroid:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager
+        use_metric: True
+    - !NoTrainer {}
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_3_centroid:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager
+        use_metric: True
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+
+  exp_6_centroid:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager
+        use_metric: True
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_1_centroid_normalization:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+        normalization: True
+    - !EpochAverager
+        use_metric: True
+    - !NoTrainer {}
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_3_centroid_normalization:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+        normalization: True
+    - !EpochAverager
+        use_metric: True
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+  
+  exp_6_centroid_normalization:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+        normalization: True
+    - !EpochAverager
+        use_metric: True
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_FC1:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !MetricTrainer
+        algorithm: itml_supervised
+        channels: 
+          - FC1
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_1_learned_metrics:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !NoTrainer {}
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_3_learned_metrics:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+  
+  exp_4_learned_metrics:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochClusterer {}
+    - !NoTrainer {}
+    - !KNNCandidateSelector
+        k: 5
+    - !MostCommonComparator {}
+
+  exp_5_learned_metrics:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !ChannelClusterer
+        n_clusters: 2
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+  
+  exp_6_learned_metrics:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+    
+  exp_1_learned_metrics_centroid:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager
+        use_metric: True
+    - !NoTrainer {}
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_3_learned_metrics_centroid:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager
+        use_metric: True
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+  
+  exp_6_learned_metrics_centroid:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager
+        use_metric: True
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_1_learned_metrics:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !NoTrainer {}
+    - !AllCandidateSelector {}
+    - !AverageComparator {}
+
+  exp_3_learned_metrics:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+  
+  exp_4_learned_metrics:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochClusterer {}
+    - !NoTrainer {}
+    - !KNNCandidateSelector
+        k: 5
+    - !MostCommonComparator {}
+
+  exp_5_learned_metrics:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !ChannelClusterer
+        n_clusters: 2
+    - !LogRegSoftmaxTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegSoftmaxComparator {}
+  
+  exp_6_learned_metrics:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_6_learned_metrics_with_train:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_6_learned_metrics_constrained_with_train:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_6_with_train:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_6_united_data_with_train:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_6:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_6_feature_importances:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  НЕ ПОСЧИТАН
+  exp_6_dtw:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager {}
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_6_centroid_new:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager
+        use_metric: True
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_6_centroid_new_200:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager
+        use_metric: True
+        max_iter: 200
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  # брала l1_ratio = 0.5 и saga-solver; 
+  # метрики чуть ниже, чем с l1/l2 и liblinear
+  exp_6_centroid_new_elasticnet: 
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager
+        use_metric: True
+        max_iter: 200
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+  exp_6_centroid_new_lbfgs:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager
+        use_metric: True
+        max_iter: 200
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+
+param_grid:
+  DistanceCalculator__metric:
+    - cosine
+    - correlation
+    - euclidean
+    # - dtw
+  
+  ChannelSmoother__window_size:
+    - 1
+    - 10
+    - 15
+    - 20
+    
+  LogRegTrainer__logreg_penalty: 
+    - l1
+    - l2

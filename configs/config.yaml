@@ -1,0 +1,31 @@
+experiments_grid:  
+  exp_6_centroid_new_without_reg:
+    - !DistanceCalculator {}
+    - !ChannelSmoother
+        smoothing_channels: all
+    - !EpochAverager
+        use_metric: True
+        max_iter: 200
+    - !LogRegTrainer {}
+    - !AllCandidateSelector {}
+    - !LogRegComparator {}
+
+param_grid:
+  DistanceCalculator__metric:
+    - cosine
+    - correlation
+    - euclidean
+    # - dtw
+  
+  ChannelSmoother__window_size:
+    - 1
+    - 10
+    - 15
+    - 20
+
+  LogRegTrainer__logreg_solver: 
+    - lbfgs
+
+  LogRegTrainer__logreg_penalty: 
+    - l1
+    - l2
